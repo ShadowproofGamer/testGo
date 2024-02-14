@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>website</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10"
+            integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+            crossorigin="anonymous"></script>
+<!--    <link rel="stylesheet" href="css/darkTheme.css">-->
+
+    <script>
+        // Function to check if user prefers dark theme
+        function isDarkTheme() {
+            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        }
+
+        // Function to set the theme for the webpage
+        function setTheme() {
+            const stylesheet = document.createElement('link');
+            stylesheet.rel = 'stylesheet';
+
+            if (isDarkTheme()) {
+                //document.body.style.background = 'black'; // Set dark theme
+                //document.body.style.color = 'white';
+                stylesheet.href = 'css/darkTheme.css';
+            } else {
+                //document.body.style.background = 'white'; // Set light theme
+                //document.body.style.color = 'black';
+                stylesheet.href = 'css/lightTheme.css';
+            }
+            document.head.appendChild(stylesheet);
+        }
+        function setThemeOld() {
+            if (isDarkTheme()) {
+                document.body.style.background = 'black'; // Set dark theme
+                document.body.style.color = 'white';
+
+            } else {
+                document.body.style.background = 'white'; // Set light theme
+                document.body.style.color = 'black';
+            }
+        }
+
+        // Call the setTheme function when the page loads
+        window.onload = setTheme;
+    </script>
+</head>
+<body>
+<h1>Hello HTMX?</h1>
+</body>
+</html>
